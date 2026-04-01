@@ -3,16 +3,38 @@
 @tailwind utilities;
 
 :root {
-  --color-bg: #F5F5DC;
-  --color-green: #2D5A27;
-  --color-gold: #D4AF37;
+  --c-bg: #FAFAF7;
+  --c-green: #2D5A27;
+  --c-gold: #C9A227;
 }
 
 body {
-  background-color: var(--color-bg);
-  color: #1c1c1a;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  color: #1A1A1A;
 }
 
-.shine-border {
-  border: 1px solid rgba(212, 175, 55, 0.2);
+/* 꽉 찬 화면 레이아웃 설계를 위한 기본 클래스 */
+.page-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  transition: all 0.3s ease;
 }
+
+/* 데스크탑에서는 최대 폭을 넓히고 여백을 조절 */
+@media (min-width: 1024px) {
+  .responsive-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.font-serif-kr { font-family: 'Noto Serif KR', serif; }
+
+/* 스크롤바 최적화 */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 10px; }

@@ -1,31 +1,30 @@
 'use client'
+import { Home, BookOpen, PenLine, Users, Music2 } from 'lucide-react'
 
-import { motion } from 'framer-motion'
-import { BookOpen, BookMarked, Users, Music2, Home } from 'lucide-react'
-
-export default function BottomNav({ activeTab, onTabChange }) {
+export default function BottomNav({ activeTab, onTabChange }: any) {
   const tabs = [
-    { id: 'bible', label: '성경', icon: BookOpen },
-    { id: 'prayer', label: '기도', icon: BookMarked },
-    { id: 'home', label: '홈', icon: Home },
-    { id: 'community', label: '커뮤', icon: Users },
-    { id: 'praise', label: '찬양', icon: Music2 },
+    { id: 'bible', i: BookOpen, l: '성경' },
+    { id: 'prayer', i: PenLine, l: '기도' },
+    { id: 'home', i: Home, l: '홈' },
+    { id: 'community', i: Users, l: '교제' },
+    { id: 'praise', i: Music2, l: '찬양' }
   ]
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-beige/80 backdrop-blur-lg border-t border-gold/20 pb-safe">
-      <div className="flex justify-around items-center h-16">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => onTabChange(tab.id)}
-            className={`flex flex-col items-center gap-1 ${activeTab === tab.id ? 'text-green-800' : 'text-gray-400'}`}
+    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[480px] h-20 bg-white/90 backdrop-blur-xl border-t border-gray-100 flex items-center justify-around px-6 z-50 shadow-[0_-10px_25px_rgba(0,0,0,0.03)]">
+      {tabs.map((t) => {
+        const isActive = activeTab === t.id
+        return (
+          <button 
+            key={t.id} 
+            onClick={() => onTabChange(t.id)} 
+            className={`flex flex-col items-center gap-1 transition-all duration-300 ${isActive ? 'text-[#2D5A27] scale-110' : 'text-gray-300'}`}
           >
-            <tab.icon size={20} />
-            <span className="text-[10px]">{tab.label}</span>
+            <t.i size={24} strokeWidth={isActive ? 2.5 : 1.5} />
+            <span className={`text-[10px] font-medium transition-opacity ${isActive ? 'opacity-100' : 'opacity-0'}`}>{t.l}</span>
           </button>
-        ))}
-      </div>
+        )
+      })}
     </nav>
   )
 }

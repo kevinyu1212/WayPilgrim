@@ -1,30 +1,20 @@
 'use client'
-
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-
 const EMOTIONS = [
-  { id: 'peace', label: '평안', emoji: '🕊️', verse: '빌 4:7' },
-  { id: 'anxiety', label: '불안', emoji: '🌊', verse: '마 6:34' },
-  { id: 'gratitude', label: '감사', emoji: '✨', verse: '살전 5:18' },
-  { id: 'sadness', label: '슬픔', emoji: '💧', verse: '시 34:18' },
-  { id: 'joy', label: '기쁨', emoji: '☀️', verse: '시 16:11' },
-  { id: 'tired', label: '지침', emoji: '🌿', verse: '마 11:28' },
+  { id: 'peace', label: '평안', symbol: '𐂂' },
+  { id: 'anxiety', label: '불안', symbol: '⚓︎' },
+  { id: 'gratitude', label: '감사', symbol: '❦' },
+  { id: 'sadness', label: '슬픔', symbol: '💧' },
+  { id: 'hope', label: '소망', symbol: '☀︎' },
+  { id: 'love', label: '사랑', symbol: '❤︎' }
 ]
 
 export default function EmotionGrid() {
-  const [selected, setSelected] = useState(null)
-
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-3 gap-4">
       {EMOTIONS.map((e) => (
-        <button
-          key={e.id}
-          onClick={() => setSelected(selected === e.id ? null : e.id)}
-          className={`flex flex-col items-center p-4 rounded-2xl transition-all ${selected === e.id ? 'bg-green-100 ring-2 ring-green-600' : 'bg-white/50'}`}
-        >
-          <span className="text-2xl mb-1">{e.emoji}</span>
-          <span className="text-xs font-medium">{e.label}</span>
+        <button key={e.id} className="h-24 flex flex-col items-center justify-center space-y-2 rounded-2xl prayer-glass transition-all hover:bg-white/60 group">
+          <span className="text-xl text-[var(--color-green)]/40 group-hover:text-[var(--color-gold)]">{e.symbol}</span>
+          <span className="text-xs text-[var(--color-text-muted)] font-medium">{e.label}</span>
         </button>
       ))}
     </div>
